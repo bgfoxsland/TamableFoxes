@@ -6,7 +6,7 @@
 
     <groupId>net.seanomik</groupId>
     <artifactId>tamablefoxes-parent</artifactId>
-    <version>2.2.11-SNAPSHOT</version>
+    <version>2.3.0-FOX</version>
     <packaging>pom</packaging>
 
     <repositories>
