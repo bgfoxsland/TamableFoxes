@@ -23,6 +23,7 @@ import net.seanomik.tamablefoxes.versions.version_1_19_3_R1.NMSInterface_1_19_3_
 import net.seanomik.tamablefoxes.versions.version_1_19_R3.NMSInterface_1_19_4_R1;
 import net.seanomik.tamablefoxes.versions.version_1_20_R1.NMSInterface_1_20_R1;
 import net.seanomik.tamablefoxes.versions.version_1_20_R3.NMSInterface_1_20_R3;
+import net.seanomik.tamablefoxes.versions.version_1_21_R1.NMSInterface_1_21_R1;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.*;
 import org.bukkit.event.Listener;
@@ -53,59 +54,40 @@ public final class TamableFoxes extends JavaPlugin implements Listener {
         LanguageConfig.getConfig(this).saveDefault();
 
         // Verify server version
-        String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
-        String specificVersion = Bukkit.getVersion();
-        specificVersion = specificVersion.substring(specificVersion.indexOf("(MC: ") + 5, specificVersion.indexOf(')'));
+        // FOX
+        switch (Bukkit.getMinecraftVersion()) {
+            case "1.14", "1.14.1", "1.14.2", "1.14.3", "1.14.4" -> nmsInterface = new NMSInterface_1_14_R1();
+            case "1.15", "1.15.1", "1.15.2" -> nmsInterface = new NMSInterface_1_15_R1();
+            case "1.16" -> nmsInterface = new NMSInterface_1_16_R1();
+            case "1.16.2", "1.16.3" -> nmsInterface = new NMSInterface_1_16_R2();
+            case "1.16.4", "1.16.5" -> nmsInterface = new NMSInterface_1_16_R3();
+            case "1.17" -> nmsInterface = new NMSInterface_1_17_R1();
+            case "1.17.1" -> nmsInterface = new NMSInterface_1_17_1_R1();
+            case "1.18" -> nmsInterface = new NMSInterface_1_18_R1();
+            case "1.18.1" -> nmsInterface = new NMSInterface_1_18_1_R1();
+            case "1.18.2" -> nmsInterface = new NMSInterface_1_18_R2();
+            case "1.19" -> nmsInterface = new NMSInterface_1_19_R1();
+            case "1.19.1" -> nmsInterface = new NMSInterface_1_19_1_R1();
+            case "1.19.2" -> nmsInterface = new NMSInterface_1_19_2_R1();
+            case "1.19.3" -> nmsInterface = new NMSInterface_1_19_3_R1();
+            case "1.19.4" -> nmsInterface = new NMSInterface_1_19_4_R1();
+            case "1.20", "1.20.1" -> nmsInterface = new NMSInterface_1_20_R1();
+            case "1.20.3", "1.20.4" -> nmsInterface = new NMSInterface_1_20_R3();
+            case "1.21" -> nmsInterface = new NMSInterface_1_21_R1(); // FOX
 
-        double versionDouble = Double.parseDouble(specificVersion.substring(2));
+            default -> {
+                Bukkit.getServer().getConsoleSender().sendMessage(Config.getPrefix() + ChatColor.RED + LanguageConfig.getUnsupportedMCVersionRegister());
+                Bukkit.getServer().getConsoleSender().sendMessage(Config.getPrefix() + ChatColor.RED + "You're trying to run MC version " + Bukkit.getMinecraftVersion() + " which is not supported!");
+                Bukkit.getServer().getConsoleSender().sendMessage(Config.getPrefix() + "Disabling plugin...");
+                versionSupported = false;
 
-        if (equalOrBetween(versionDouble, 14D, 14.4D)) {
-            nmsInterface = new NMSInterface_1_14_R1();
-        } else if (equalOrBetween(versionDouble, 15D, 15.2D)) {
-            nmsInterface = new NMSInterface_1_15_R1();
-        } else if (versionDouble == 16D) {
-            nmsInterface = new NMSInterface_1_16_R1();
-        } else if (versionDouble == 16.2D || versionDouble == 16.3D) {
-            nmsInterface = new NMSInterface_1_16_R2();
-        } else if (versionDouble == 16.4D || versionDouble == 16.5D) {
-            nmsInterface = new NMSInterface_1_16_R3();
-        } else if (versionDouble == 17D) {
-            nmsInterface = new NMSInterface_1_17_R1();
-        } else if (versionDouble == 17.1D) {
-            nmsInterface = new NMSInterface_1_17_1_R1();
-        } else if (versionDouble == 18D) {
-            nmsInterface = new NMSInterface_1_18_R1();
-        } else if (versionDouble == 18.1D) {
-            nmsInterface = new NMSInterface_1_18_1_R1();
-        } else if (versionDouble == 18.2D) {
-            nmsInterface = new NMSInterface_1_18_R2();
-        } else if (versionDouble == 19D) {
-            nmsInterface = new NMSInterface_1_19_R1();
-        } else if (versionDouble == 19.1D) {
-            nmsInterface = new NMSInterface_1_19_1_R1();
-        } else if (versionDouble == 19.2D) {
-            nmsInterface = new NMSInterface_1_19_2_R1();
-        } else if (versionDouble == 19.3D) {
-            nmsInterface = new NMSInterface_1_19_3_R1();
-        } else if (versionDouble == 19.4D) {
-            nmsInterface = new NMSInterface_1_19_4_R1();
-        } else if (versionDouble == 20D || versionDouble == 20.1D) {
-            nmsInterface = new NMSInterface_1_20_R1();
-        } else if (versionDouble == 20.3D || versionDouble == 20.4D) {
-            nmsInterface = new NMSInterface_1_20_R3();
-
-        } else {
-            Bukkit.getServer().getConsoleSender().sendMessage(Config.getPrefix() + ChatColor.RED + LanguageConfig.getUnsupportedMCVersionRegister());
-            Bukkit.getServer().getConsoleSender().sendMessage(Config.getPrefix() + ChatColor.RED + "You're trying to run MC version " + specificVersion + " which is not supported!");
-            Bukkit.getServer().getConsoleSender().sendMessage(Config.getPrefix() + "Disabling plugin...");
-            versionSupported = false;
-
-            Bukkit.getPluginManager().disablePlugin(this);
+                Bukkit.getPluginManager().disablePlugin(this);
+            }
         }
 
         if (versionSupported) {
             // Display starting message then register entity.
-            Bukkit.getServer().getConsoleSender().sendMessage(Config.getPrefix() + ChatColor.YELLOW + LanguageConfig.getMCVersionLoading(version));
+            Bukkit.getServer().getConsoleSender().sendMessage(Config.getPrefix() + ChatColor.YELLOW + LanguageConfig.getMCVersionLoading(Bukkit.getMinecraftVersion()));
             nmsInterface.registerCustomFoxEntity();
 
             if (Config.getMaxPlayerFoxTames() != 0) {

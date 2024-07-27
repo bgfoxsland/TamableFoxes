@@ -25,7 +25,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.3.1-SNAPSHOT</version>
+                <version>3.6.1-SNAPSHOT</version>
                 <configuration>
                     <relocations>
                         <relocation>
@@ -50,7 +50,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.3.1-SNAPSHOT</version>
+                <version>3.6.1-SNAPSHOT</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -58,7 +58,9 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <outputFile>/media/data_drive/Development/Spigot/DevServers/${server.version}/plugins/TamableFoxes_v${project.parent.version}.jar</outputFile>
+                            <!-- FOX: Fix output file location -->
+                            <outputFile>target/TamableFoxes-v${project.parent.version}.jar</outputFile>
+                            <!--<outputFile>/media/data_drive/Development/Spigot/DevServers/${server.version}/plugins/TamableFoxes_v${project.parent.version}.jar</outputFile>-->
                             <!--<outputFile>C:\Development\Java\Spigot Servers\${server.version}\plugins\TamableFoxes_v${project.parent.version}.jar</outputFile>-->
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                         </configuration>
@@ -87,9 +89,10 @@
             <id>codemc-snapshots-anvilgui</id>
             <url>https://repo.codemc.io/repository/maven-snapshots/</url>
         </repository>
+        <!-- FOX: Spigot -> Paper -->
         <repository>
-            <id>spigot-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+            <id>paper-repo</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
         <repository>
             <id>sonatype</id>
@@ -205,6 +208,12 @@
             <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>net.seanomik</groupId>
+            <artifactId>tamablefoxes_v1_21_R1</artifactId>
+            <version>${project.parent.version}</version>
+            <scope>compile</scope>
+        </dependency>
         <!-- End of entity implementations -->
         <dependency>
             <groupId>org.bstats</groupId>
@@ -218,16 +227,17 @@
             <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
-        <dependency> <!-- We need to do this so we get the spigot api without nms. -->
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.14-R0.1-SNAPSHOT</version>
+        <!-- FOX: Spigot -> Paper -->
+        <dependency>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>1.20.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>net.wesjd</groupId>
             <artifactId>anvilgui</artifactId>
-            <version>1.9.2-SNAPSHOT</version>
+            <version>1.10.0-SNAPSHOT</version> <!-- FOX -->
         </dependency>
     </dependencies>
 </project>

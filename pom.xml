@@ -13,6 +13,8 @@
         <module>Plugin</module>
         <module>Utility</module>
 
+        <module>1_21_R1</module>
+
         <module>1_20_R3</module>
         <module>1_20_R1</module>
 
@@ -49,8 +51,9 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.8.1</version>
                     <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
+                        <!-- FOX: Java 8 -> Java 21 -->
+                        <source>21</source>
+                        <target>21</target>
                         <compilerArgs>
                             <arg>-parameters</arg>
                         </compilerArgs>
@@ -59,7 +62,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-shade-plugin</artifactId>
-                    <version>3.2.4</version>
+                    <version>3.6.1-SNAPSHOT</version>
                     <executions>
                         <execution>
                             <phase>package</phase>

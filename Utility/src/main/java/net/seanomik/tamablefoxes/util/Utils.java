@@ -5,6 +5,7 @@ import org.bukkit.plugin.Plugin;
 
 import java.lang.reflect.Constructor;
 import java.util.List;
+import java.util.Objects;
 
 public class Utils {
     public static String getPrefix() {
@@ -22,7 +23,8 @@ public class Utils {
 
     public static Object instantiatePrivateInnerClass(Class outer, String innerName, Object outerObject, List<Object> args, List<Class<?>> argTypes) {
         try {
-            Class<?> innerClass = getPrivateInnerClass(outer, innerName);
+            // FOX: better error message
+            Class<?> innerClass = Objects.requireNonNull(getPrivateInnerClass(outer, innerName), "Inner class of " + outer.getName() + " not found: " + innerName);
 
             Object[] argObjects = new Object[args.size() + 1];
             Class<?>[] argClasses = new Class<?>[argTypes.size() + 1];
