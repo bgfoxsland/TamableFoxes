@@ -73,7 +73,7 @@ public final class TamableFoxes extends JavaPlugin implements Listener {
             case "1.19.4" -> nmsInterface = new NMSInterface_1_19_4_R1();
             case "1.20", "1.20.1" -> nmsInterface = new NMSInterface_1_20_R1();
             case "1.20.3", "1.20.4" -> nmsInterface = new NMSInterface_1_20_R3();
-            case "1.21" -> nmsInterface = new NMSInterface_1_21_R1(); // FOX
+            case "1.21", "1.21.1" -> nmsInterface = new NMSInterface_1_21_R1(); // FOX
 
             default -> {
                 Bukkit.getServer().getConsoleSender().sendMessage(Config.getPrefix() + ChatColor.RED + LanguageConfig.getUnsupportedMCVersionRegister());
