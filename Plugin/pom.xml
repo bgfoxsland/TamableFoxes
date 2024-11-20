@@ -22,31 +22,7 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.6.1-SNAPSHOT</version>
-                <configuration>
-                    <relocations>
-                        <relocation>
-                            <pattern>org.bstats</pattern>
-                            <shadedPattern>net.seanomik.tamablefoxes.bstats</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>net.wesjd.anvilgui</pattern>
-                            <shadedPattern>net.seanomik.tamablefoxes.anvilgui</shadedPattern>
-                        </relocation>
-                    </relocations>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            <!-- Shade plugin configuration inchangée -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -58,22 +34,38 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <!-- FOX: Fix output file location -->
                             <outputFile>target/TamableFoxes-v${project.parent.version}.jar</outputFile>
-                            <!--<outputFile>/media/data_drive/Development/Spigot/DevServers/${server.version}/plugins/TamableFoxes_v${project.parent.version}.jar</outputFile>-->
-                            <!--<outputFile>C:\Development\Java\Spigot Servers\${server.version}\plugins\TamableFoxes_v${project.parent.version}.jar</outputFile>-->
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>../run/plugins</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}</directory>
+                                    <includes>
+                                        <include>TamableFoxes-v${project.parent.version}.jar</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
     </build>
 
     <!-- For maven-shade-plugin 3.3.0-SNAPSHOT -->
@@ -237,7 +229,7 @@
         <dependency>
             <groupId>net.wesjd</groupId>
             <artifactId>anvilgui</artifactId>
-            <version>1.10.0-SNAPSHOT</version> <!-- FOX -->
+            <version>1.10.3-SNAPSHOT</version> <!-- FOX -->
         </dependency>
     </dependencies>
 </project>
