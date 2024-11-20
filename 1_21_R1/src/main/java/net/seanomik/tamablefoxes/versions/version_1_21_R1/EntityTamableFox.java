@@ -72,14 +72,12 @@ import org.bukkit.event.entity.EntityRegainHealthEvent;
 public class EntityTamableFox extends Fox {
 
     protected static final EntityDataAccessor<Boolean> tamed;
-    protected static final EntityDataAccessor<Optional<UUID>> ownerUUID;
 
     //private static final EntityDataAccessor<Byte> bw; // DATA_FLAGS_ID
     private static final Predicate<Entity> AVOID_PLAYERS; // AVOID_PLAYERS
 
     static {
         tamed = SynchedEntityData.defineId(EntityTamableFox.class, EntityDataSerializers.BOOLEAN);
-        ownerUUID = SynchedEntityData.defineId(EntityTamableFox.class, EntityDataSerializers.OPTIONAL_UUID);
 
         AVOID_PLAYERS = (entity) -> !entity.isCrouching();// && EntitySelector.test(entity);
     }
@@ -239,7 +237,6 @@ public class EntityTamableFox extends Fox {
     protected void defineSynchedData(SynchedEntityData.Builder datawatcher) {
         super.defineSynchedData(datawatcher);
         datawatcher.define(tamed, false);
-        datawatcher.define(ownerUUID, Optional.empty());
     }
 
     @Override
@@ -506,11 +503,11 @@ public class EntityTamableFox extends Fox {
 
     @Nullable
     public UUID getOwnerUUID() {
-        return this.entityData.get(ownerUUID).orElse(null);
+        return this.entityData == null ? null : this.entityData.get(DATA_TRUSTED_ID_0).orElse(null);
     }
 
     public void setOwnerUUID(@Nullable UUID ownerUuid) {
-        this.entityData.set(ownerUUID, Optional.ofNullable(ownerUuid));
+        this.entityData.set(DATA_TRUSTED_ID_0, Optional.ofNullable(ownerUuid));
     }
 
     public void tame(Player owner) {

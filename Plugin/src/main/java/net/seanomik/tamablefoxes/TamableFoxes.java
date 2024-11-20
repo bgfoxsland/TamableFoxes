@@ -93,8 +93,6 @@ public final class TamableFoxes extends JavaPlugin implements Listener {
             if (Config.getMaxPlayerFoxTames() != 0) {
                 SQLiteHelper.getInstance(this).createTablesIfNotExist();
             }
-
-            Metrics metrics = new Metrics(this, BSTATS_PLUGIN_ID);
         }
     }
 

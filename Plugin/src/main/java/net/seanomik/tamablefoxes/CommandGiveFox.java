@@ -64,11 +64,15 @@ public class CommandGiveFox implements TabExecutor {
 
             synchronized(syncObject) {
                 try {
-                    syncObject.wait(5000);
+                    syncObject.wait();
                     playerInteractListener.players.remove(player.getUniqueId());
 
                     Fox fox = syncObject.interactedFox;
-                    if (plugin.nmsInterface.getFoxOwner(fox).equals(player.getUniqueId()) ||
+                    if (fox == null) {
+                        sender.sendMessage("§cNo fox selected.");
+                        return;
+                    }
+                    if (player.getUniqueId().equals(plugin.nmsInterface.getFoxOwner(fox)) ||
                             player.hasPermission("tamablefoxes.givefox.give.others")) {
                         plugin.nmsInterface.changeFoxOwner(fox, givingToPlayer);
 

@@ -4,7 +4,6 @@ import java.lang.reflect.Field;
 import java.util.UUID;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Fox;
-import net.seanomik.tamablefoxes.util.FieldHelper;
 import net.seanomik.tamablefoxes.util.NMSInterface;
 import net.seanomik.tamablefoxes.util.io.Config;
 import net.seanomik.tamablefoxes.util.io.LanguageConfig;
