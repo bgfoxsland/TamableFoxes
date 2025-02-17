@@ -206,6 +206,12 @@
             <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>net.seanomik</groupId>
+            <artifactId>tamablefoxes_v1_21_4_R1</artifactId>
+            <version>${project.parent.version}</version>
+            <scope>compile</scope>
+        </dependency>
         <!-- End of entity implementations -->
         <dependency>
             <groupId>org.bstats</groupId>
