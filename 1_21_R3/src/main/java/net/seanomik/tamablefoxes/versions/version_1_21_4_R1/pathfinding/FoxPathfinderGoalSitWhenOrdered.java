@@ -1,11 +1,11 @@
-package version_1_21_4_R1.pathfinding;
+package net.seanomik.tamablefoxes.versions.version_1_21_4_R1.pathfinding;
 
 import java.util.EnumSet;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.seanomik.tamablefoxes.util.Utils;
 import org.bukkit.Bukkit;
-import version_1_21_4_R1.EntityTamableFox;
+import net.seanomik.tamablefoxes.versions.version_1_21_4_R1.EntityTamableFox;
 
 public class FoxPathfinderGoalSitWhenOrdered extends Goal {
     private final EntityTamableFox mob;

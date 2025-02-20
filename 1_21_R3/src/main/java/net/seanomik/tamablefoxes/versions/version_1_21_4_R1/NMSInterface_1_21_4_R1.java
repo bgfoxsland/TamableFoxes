@@ -1,4 +1,4 @@
-package version_1_21_4_R1;
+package net.seanomik.tamablefoxes.versions.version_1_21_4_R1;
 
 import java.lang.reflect.Field;
 import java.util.UUID;
@@ -17,7 +17,7 @@ public class NMSInterface_1_21_4_R1 implements NMSInterface {
     @Override
     public void registerCustomFoxEntity() {
         try { // Replace the fox entity
-            Field field = EntityType.FOX.getClass().getDeclaredField("bF"); // bF = factory
+            Field field = EntityType.FOX.getClass().getDeclaredField("bZ"); // bZ = factory
             field.setAccessible(true);
             field.set(EntityType.FOX, (EntityType.EntityFactory<Fox>) EntityTamableFox::new);
             Bukkit.getServer().getConsoleSender().sendMessage(Config.getPrefix() + ChatColor.GREEN + LanguageConfig.getSuccessReplaced());

@@ -1,9 +1,9 @@
-package version_1_21_4_R1.pathfinding;
+package net.seanomik.tamablefoxes.versions.version_1_21_4_R1.pathfinding;
 
 import java.util.EnumSet;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
-import version_1_21_4_R1.EntityTamableFox;
+import net.seanomik.tamablefoxes.versions.version_1_21_4_R1.EntityTamableFox;
 
 public class FoxPathfinderGoalSleepWhenOrdered extends Goal {
     private final EntityTamableFox mob;

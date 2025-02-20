@@ -1,7 +1,7 @@
-package version_1_21_4_R1.pathfinding;
+package net.seanomik.tamablefoxes.versions.version_1_21_4_R1.pathfinding;
 
 import net.minecraft.world.entity.ai.goal.PanicGoal;
-import version_1_21_4_R1.EntityTamableFox;
+import net.seanomik.tamablefoxes.versions.version_1_21_4_R1.EntityTamableFox;
 
 public class FoxPathfinderGoalPanic extends PanicGoal {
     EntityTamableFox tamableFox;

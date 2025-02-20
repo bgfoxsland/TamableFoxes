@@ -1,4 +1,4 @@
-package version_1_21_4_R1.pathfinding;
+package net.seanomik.tamablefoxes.versions.version_1_21_4_R1.pathfinding;
 
 import java.util.EnumSet;
 import net.minecraft.core.BlockPos;
@@ -15,7 +15,7 @@ import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_21_R3.entity.CraftEntity;
 import org.bukkit.event.entity.EntityTeleportEvent;
-import version_1_21_4_R1.EntityTamableFox;
+import net.seanomik.tamablefoxes.versions.version_1_21_4_R1.EntityTamableFox;
 
 public class FoxPathfinderGoalFollowOwner extends Goal {
     public static final int TELEPORT_WHEN_DISTANCE_IS = 12;

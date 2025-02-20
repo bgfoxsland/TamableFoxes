@@ -1,4 +1,4 @@
-package version_1_21_4_R1.pathfinding;
+package net.seanomik.tamablefoxes.versions.version_1_21_4_R1.pathfinding;
 
 import java.util.EnumSet;
 import java.util.Iterator;
@@ -13,7 +13,7 @@ import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.phys.AABB;
 import org.bukkit.GameRule;
 import org.bukkit.event.entity.EntityTargetEvent.TargetReason;
-import version_1_21_4_R1.EntityTamableFox;
+import net.seanomik.tamablefoxes.versions.version_1_21_4_R1.EntityTamableFox;
 
 public class FoxPathfinderGoalHurtByTarget extends TargetGoal {
     private static final TargetingConditions HURT_BY_TARGETING = TargetingConditions.forCombat().ignoreLineOfSight().ignoreInvisibilityTesting();

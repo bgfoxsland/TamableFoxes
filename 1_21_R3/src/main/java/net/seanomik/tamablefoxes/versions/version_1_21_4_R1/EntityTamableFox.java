@@ -1,4 +1,4 @@
-package version_1_21_4_R1;
+package net.seanomik.tamablefoxes.versions.version_1_21_4_R1;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -54,10 +54,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.NameTagItem;
 import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.scores.PlayerTeam;
-import net.minecraft.world.scores.Team;
 import net.seanomik.tamablefoxes.util.Utils;
 import net.seanomik.tamablefoxes.util.io.Config;
 import net.seanomik.tamablefoxes.util.io.LanguageConfig;
@@ -70,14 +68,14 @@ import org.bukkit.GameRule;
 import org.bukkit.craftbukkit.v1_21_R3.event.CraftEventFactory;
 import org.bukkit.craftbukkit.v1_21_R3.inventory.CraftItemStack;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
-import version_1_21_4_R1.pathfinding.FoxPathfinderGoalFollowOwner;
-import version_1_21_4_R1.pathfinding.FoxPathfinderGoalHurtByTarget;
-import version_1_21_4_R1.pathfinding.FoxPathfinderGoalOwnerHurtByTarget;
-import version_1_21_4_R1.pathfinding.FoxPathfinderGoalOwnerHurtTarget;
-import version_1_21_4_R1.pathfinding.FoxPathfinderGoalPanic;
-import version_1_21_4_R1.pathfinding.FoxPathfinderGoalSitWhenOrdered;
-import version_1_21_4_R1.pathfinding.FoxPathfinderGoalSleepWhenOrdered;
-import version_1_21_4_R1.pathfinding.FoxPathfinderGoalSleepWithOwner;
+import net.seanomik.tamablefoxes.versions.version_1_21_4_R1.pathfinding.FoxPathfinderGoalFollowOwner;
+import net.seanomik.tamablefoxes.versions.version_1_21_4_R1.pathfinding.FoxPathfinderGoalHurtByTarget;
+import net.seanomik.tamablefoxes.versions.version_1_21_4_R1.pathfinding.FoxPathfinderGoalOwnerHurtByTarget;
+import net.seanomik.tamablefoxes.versions.version_1_21_4_R1.pathfinding.FoxPathfinderGoalOwnerHurtTarget;
+import net.seanomik.tamablefoxes.versions.version_1_21_4_R1.pathfinding.FoxPathfinderGoalPanic;
+import net.seanomik.tamablefoxes.versions.version_1_21_4_R1.pathfinding.FoxPathfinderGoalSitWhenOrdered;
+import net.seanomik.tamablefoxes.versions.version_1_21_4_R1.pathfinding.FoxPathfinderGoalSleepWhenOrdered;
+import net.seanomik.tamablefoxes.versions.version_1_21_4_R1.pathfinding.FoxPathfinderGoalSleepWithOwner;
 
 public class EntityTamableFox extends Fox {
 
@@ -125,17 +123,17 @@ public class EntityTamableFox extends Fox {
             // and the user will be using a normal spigot jar.
 
             // Wild animal attacking
-            Field landTargetGoal = this.getClass().getSuperclass().getDeclaredField("cu"); // landTargetGoal
+            Field landTargetGoal = this.getClass().getSuperclass().getDeclaredField("cq"); // landTargetGoal
             landTargetGoal.setAccessible(true);
             landTargetGoal.set(this, new NearestAttackableTargetGoal(this, Animal.class, 10, false, false, (entityliving, level) -> {
                 return (!isTamed() || (Config.doesTamedAttackWildAnimals() && isTamed())) && (entityliving instanceof Chicken || entityliving instanceof Rabbit);
             }));
 
-            Field turtleEggTargetGoal = this.getClass().getSuperclass().getDeclaredField("cv"); // turtleEggTargetGoal
+            Field turtleEggTargetGoal = this.getClass().getSuperclass().getDeclaredField("cr"); // turtleEggTargetGoal
             turtleEggTargetGoal.setAccessible(true);
             turtleEggTargetGoal.set(this, new NearestAttackableTargetGoal(this, Turtle.class, 10, false, false, Turtle.BABY_ON_LAND_SELECTOR));
 
-            Field fishTargetGoal = this.getClass().getSuperclass().getDeclaredField("cw"); // fishTargetGoal
+            Field fishTargetGoal = this.getClass().getSuperclass().getDeclaredField("cs"); // fishTargetGoal
             fishTargetGoal.setAccessible(true);
             fishTargetGoal.set(this, new NearestAttackableTargetGoal(this, AbstractFish.class, 20, false, false, (entityliving, level) -> {
                 return (!isTamed() || (Config.doesTamedAttackWildAnimals() && isTamed())) && entityliving instanceof AbstractSchoolingFish;
@@ -201,7 +199,7 @@ public class EntityTamableFox extends Fox {
     }
 
     protected EntityDataAccessor<Byte> getDataFlagsId() throws NoSuchFieldException, IllegalAccessException {
-        Field dataFlagsField = Fox.class.getDeclaredField("ch"); // DATA_FLAGS_ID
+        Field dataFlagsField = Fox.class.getDeclaredField("cd"); // DATA_FLAGS_ID
         dataFlagsField.setAccessible(true);
         EntityDataAccessor<Byte> dataFlagsId = (EntityDataAccessor<Byte>) dataFlagsField.get(null);
         dataFlagsField.setAccessible(false);
@@ -586,6 +584,8 @@ public class EntityTamableFox extends Fox {
     }
 
     // Override considersEntityAsAlly (Entity::r(Entity))
+    // This used to be isAlliedTo(Entity) but that is now final and cannot be overridden. Internally that calls this, which can be
+    // Overridden, so this is probably fine
     @Override
     public boolean considersEntityAsAlly(Entity entity) {
         if (this.isTamed()) {
