@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Predicate;
@@ -580,17 +581,10 @@ public class EntityTamableFox extends Fox {
     // Overridden, so this is probably fine
     @Override
     public boolean considersEntityAsAlly(Entity entity) {
-        if (this.isTamed()) {
-            LivingEntity entityOwner = this.getOwner();
-            if (entity == entityOwner) {
-                return true;
-            }
-
-            if (entityOwner != null) {
-                return entityOwner.isAlliedTo(entity);
-            }
+        if (this.isTamed() && Objects.equals(entity.getUUID(), this.getOwnerUUID())) {
+            return true;
         }
-        return super.isAlliedTo(entity);
+        return super.considersEntityAsAlly(entity);
     }
 
 
