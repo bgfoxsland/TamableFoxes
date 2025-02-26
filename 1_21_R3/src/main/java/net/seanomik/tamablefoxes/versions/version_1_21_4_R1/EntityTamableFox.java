@@ -348,8 +348,8 @@ public class EntityTamableFox extends Fox {
                     .title("Name your new friend!")
                     .plugin(Utils.tamableFoxesPlugin)
                     .open(player);
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
         }
     }
 
