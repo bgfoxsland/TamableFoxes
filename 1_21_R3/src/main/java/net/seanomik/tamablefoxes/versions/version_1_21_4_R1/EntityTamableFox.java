@@ -56,6 +56,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.NameTagItem;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.scores.PlayerTeam;
 import net.seanomik.tamablefoxes.util.Utils;
 import net.seanomik.tamablefoxes.util.io.Config;
@@ -393,6 +394,7 @@ public class EntityTamableFox extends Fox {
 
                     this.goalSleepWhenOrdered.setOrderedToSleep(false);
                     this.goalSitWhenOrdered.setOrderedToSit(!this.isOrderedToSit());
+                    this.setDeltaMovement(Vec3.ZERO); // FOX - set velocity to zero
                     return InteractionResult.SUCCESS;
                 } else if (entityhuman.isCrouching()) { // Swap/Put/Take item from fox.
                     // Ignore buckets since they can be easily duplicated.
@@ -410,6 +412,7 @@ public class EntityTamableFox extends Fox {
                     else if (!entityhuman.hasItemInSlot(EquipmentSlot.MAINHAND)) {
                         this.goalSitWhenOrdered.setOrderedToSit(false);
                         this.goalSleepWhenOrdered.setOrderedToSleep(!this.goalSleepWhenOrdered.isOrderedToSleep());
+                        this.setDeltaMovement(Vec3.ZERO); // FOX - set velocity to zero
                     }
 
                     // Run this task async to make sure to not slow the server down.
