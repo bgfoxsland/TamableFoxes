@@ -79,14 +79,10 @@ import net.seanomik.tamablefoxes.versions.version_1_21_4_R1.pathfinding.FoxPathf
 
 public class EntityTamableFox extends Fox {
 
-    protected static final EntityDataAccessor<Boolean> tamed;
-
     //private static final EntityDataAccessor<Byte> bw; // DATA_FLAGS_ID
     private static final Predicate<Entity> AVOID_PLAYERS; // AVOID_PLAYERS
 
     static {
-        tamed = SynchedEntityData.defineId(EntityTamableFox.class, EntityDataSerializers.BOOLEAN);
-
         AVOID_PLAYERS = (entity) -> !entity.isCrouching();// && EntitySelector.test(entity);
     }
 
@@ -94,6 +90,8 @@ public class EntityTamableFox extends Fox {
     private FoxPathfinderGoalSitWhenOrdered goalSitWhenOrdered;
 
     private FoxPathfinderGoalSleepWhenOrdered goalSleepWhenOrdered;
+
+    private boolean tamed;
 
     public EntityTamableFox(EntityType<? extends Fox> entitytype, Level world) {
         super(entitytype, world);
@@ -242,12 +240,6 @@ public class EntityTamableFox extends Fox {
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder datawatcher) {
-        super.defineSynchedData(datawatcher);
-        datawatcher.define(tamed, false);
-    }
-
-    @Override
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         if (this.getOwnerUUID() == null) {
@@ -301,11 +293,11 @@ public class EntityTamableFox extends Fox {
 
     public boolean isTamed() {
         UUID ownerUuid = getOwnerUUID();
-        return this.entityData.get(tamed) && (ownerUuid != null && !ownerUuid.equals(new UUID(0, 0)));
+        return this.tamed && (ownerUuid != null && !ownerUuid.equals(new UUID(0, 0)));
     }
 
     public void setTamed(boolean tamed) {
-        this.entityData.set(EntityTamableFox.tamed, tamed);
+        this.tamed = tamed;
         this.reassessTameGoals();
 
         if (tamed) {
