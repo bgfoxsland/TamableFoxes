@@ -235,7 +235,7 @@
         <dependency>
             <groupId>net.wesjd</groupId>
             <artifactId>anvilgui</artifactId>
-            <version>1.10.3-SNAPSHOT</version> <!-- FOX -->
+            <version>1.10.4-SNAPSHOT</version> <!-- FOX -->
         </dependency>
     </dependencies>
 </project>
