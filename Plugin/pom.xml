@@ -212,6 +212,12 @@
             <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>net.seanomik</groupId>
+            <artifactId>tamablefoxes_v1_21_5_R1</artifactId>
+            <version>${project.parent.version}</version>
+            <scope>compile</scope>
+        </dependency>
         <!-- End of entity implementations -->
         <dependency>
             <groupId>org.bstats</groupId>
@@ -235,7 +241,7 @@
         <dependency>
             <groupId>net.wesjd</groupId>
             <artifactId>anvilgui</artifactId>
-            <version>1.10.4-SNAPSHOT</version> <!-- FOX -->
+            <version>1.10.5-SNAPSHOT</version> <!-- FOX -->
         </dependency>
     </dependencies>
 </project>

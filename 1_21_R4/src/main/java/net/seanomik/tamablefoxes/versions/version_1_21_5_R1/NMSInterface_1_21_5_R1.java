@@ -1,4 +1,4 @@
-package net.seanomik.tamablefoxes.versions.version_1_21_R1;
+package net.seanomik.tamablefoxes.versions.version_1_21_5_R1;
 
 import java.lang.reflect.Field;
 import java.util.UUID;
@@ -10,14 +10,15 @@ import net.seanomik.tamablefoxes.util.io.LanguageConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_21_R1.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_21_R4.entity.CraftEntity;
 import org.bukkit.entity.Player;
 
-public class NMSInterface_1_21_R1 implements NMSInterface {
+public class NMSInterface_1_21_5_R1 implements NMSInterface {
     @Override
     public void registerCustomFoxEntity() {
+
         try { // Replace the fox entity
-            Field field = EntityType.FOX.getClass().getDeclaredField("factory"); // bF = factory
+            Field field = EntityType.FOX.getClass().getDeclaredField("factory"); // factory = factory
             field.setAccessible(true);
             field.set(EntityType.FOX, (EntityType.EntityFactory<Fox>) EntityTamableFox::new);
             Bukkit.getServer().getConsoleSender().sendMessage(Config.getPrefix() + ChatColor.GREEN + LanguageConfig.getSuccessReplaced());
@@ -30,7 +31,7 @@ public class NMSInterface_1_21_R1 implements NMSInterface {
     @Override
     public void spawnTamableFox(Location loc, FoxType type) {
         EntityTamableFox tamableFox = (EntityTamableFox) ((CraftEntity) loc.getWorld().spawnEntity(loc, org.bukkit.entity.EntityType.FOX)).getHandle();
-        tamableFox.setVariant((type == FoxType.RED) ? Fox.Type.RED : Fox.Type.SNOW);
+        tamableFox.setVariant((type == FoxType.RED) ? Fox.Variant.RED : Fox.Variant.SNOW);
     }
 
     @Override
