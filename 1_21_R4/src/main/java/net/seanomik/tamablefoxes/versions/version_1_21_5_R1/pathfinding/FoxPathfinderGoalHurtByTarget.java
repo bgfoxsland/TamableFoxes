@@ -11,6 +11,7 @@ import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.target.TargetGoal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.phys.AABB;
+import net.seanomik.tamablefoxes.versions.version_1_21_5_R1.NMSUtil;
 import org.bukkit.GameRule;
 import org.bukkit.event.entity.EntityTargetEvent.TargetReason;
 import net.seanomik.tamablefoxes.versions.version_1_21_5_R1.EntityTamableFox;
@@ -62,7 +63,7 @@ public class FoxPathfinderGoalHurtByTarget extends TargetGoal {
     }
 
     public void start() {
-        this.mob.setTarget(this.mob.getLastHurtByMob(), TargetReason.TARGET_ATTACKED_ENTITY, true);
+        NMSUtil.setTarget(this.mob, this.mob.getLastHurtByMob(), TargetReason.TARGET_ATTACKED_ENTITY);
         this.targetMob = this.mob.getTarget();
         this.timestamp = this.mob.getLastHurtByMobTimestamp();
         this.unseenMemoryTicks = 300;
@@ -119,6 +120,6 @@ public class FoxPathfinderGoalHurtByTarget extends TargetGoal {
     }
 
     protected void alertOther(Mob entityinsentient, LivingEntity entityliving) {
-        entityinsentient.setTarget(entityliving, TargetReason.TARGET_ATTACKED_NEARBY_ENTITY, true);
+        NMSUtil.setTarget(entityinsentient, entityliving, TargetReason.TARGET_ATTACKED_NEARBY_ENTITY);
     }
 }

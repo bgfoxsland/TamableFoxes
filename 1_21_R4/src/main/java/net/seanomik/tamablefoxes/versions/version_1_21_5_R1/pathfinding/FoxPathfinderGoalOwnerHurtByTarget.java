@@ -4,6 +4,7 @@ import java.util.EnumSet;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.target.TargetGoal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.seanomik.tamablefoxes.versions.version_1_21_5_R1.NMSUtil;
 import org.bukkit.event.entity.EntityTargetEvent.TargetReason;
 import net.seanomik.tamablefoxes.versions.version_1_21_5_R1.EntityTamableFox;
 
@@ -34,7 +35,7 @@ public class FoxPathfinderGoalOwnerHurtByTarget extends TargetGoal {
     }
 
     public void start() {
-        this.mob.setTarget(this.ownerLastHurtBy, TargetReason.TARGET_ATTACKED_OWNER, true);
+        NMSUtil.setTarget(this.mob, this.ownerLastHurtBy, TargetReason.TARGET_ATTACKED_OWNER);
         LivingEntity entityliving = this.tameAnimal.getOwner();
         if (entityliving != null) {
             this.timestamp = entityliving.getLastHurtByMobTimestamp();
