@@ -32,6 +32,8 @@ import java.io.*;
 import java.util.logging.Level;
 import net.seanomik.tamablefoxes.versions.version_1_21_4_R1.NMSInterface_1_21_4_R1;
 import net.seanomik.tamablefoxes.versions.version_1_21_5_R1.NMSInterface_1_21_5_R1;
+import net.seanomik.tamablefoxes.versions.version_1_21_6_R1.NMSInterface_1_21_6_R1;
+
 
 public final class TamableFoxes extends JavaPlugin implements Listener {
     private static TamableFoxes plugin;
@@ -77,6 +79,7 @@ public final class TamableFoxes extends JavaPlugin implements Listener {
             case "1.21", "1.21.1" -> nmsInterface = new NMSInterface_1_21_R1(); // FOX
             case "1.21.4" -> nmsInterface = new NMSInterface_1_21_4_R1();
             case "1.21.5" -> nmsInterface = new NMSInterface_1_21_5_R1();
+            case "1.21.6" -> nmsInterface = new NMSInterface_1_21_6_R1();
 
             default -> {
                 Bukkit.getServer().getConsoleSender().sendMessage(Config.getPrefix() + ChatColor.RED + LanguageConfig.getUnsupportedMCVersionRegister());
