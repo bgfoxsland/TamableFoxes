@@ -3,42 +3,42 @@ version: ${project.version}
 main: net.seanomik.tamablefoxes.TamableFoxes
 api-version: 1.14
 load: STARTUP
-description: Adds tamable foxes to Minecraft!
+description: 在Minecraft中添加可驯服的狐狸！
 
 commands:
   spawntamablefox:
     aliases: [ stf ]
     usage: /spawntamablefox [type]
-    description: Spawn a tamable fox at the standing location. Type can be snow or red, or left empty for a red.
+    description: 在当前位置生成一只可驯服的狐狸。类型可以是snow(雪狐)或red(红狐)，留空则默认为红狐。
   tamablefoxes:
     aliases: [ tamablefox ]
     usage: /tamablefoxes reload
-    description: Reload the Tamable Foxes plugin config. Restart when updating the plugin.
+    description: 重载可驯服狐狸插件配置。更新插件时请重启。
   givefox:
     usage: /givefox [player name]
-    description: Give a fox to another player.
+    description: 将一只狐狸给予另一个玩家。
 permissions:
   tamablefoxes.givefox.give.others:
-    description: "Allows the player to give another players fox to a player with /givefox"
+    description: "允许玩家使用/givefox命令将其他人的狐狸转交给别的玩家"
     default: op
   tamablefoxes.givefox.give:
-    description: "Gives the player the ability to give foxes to other players with /givefox"
+    description: "赋予玩家使用/givefox命令将狐狸给予其他玩家的能力"
     default: true
   tamablefoxes.givefox.receive:
-    description: "Gives the player the ability to receive foxes from other players from /givefox"
+    description: "赋予玩家从/givefox命令接收狐狸的能力"
     default: true
   tamablefoxes.reload:
-    description: "Reloads the plugin config."
+    description: "重载插件配置。"
     default: op
   tamablefoxes.spawn:
-    description: "Gives the player the ability to spawn tamable foxes."
+    description: "赋予玩家生成可驯服狐狸的能力。"
     default: op
   tamablefoxes.tame:
-    description: "Gives the player the ability to tame a fox."
+    description: "赋予玩家驯服狐狸的能力。"
     default: true
   tamablefoxes.tame.unlimited:
-    description: "Lets players bypass the tame limit."
+    description: "让玩家绕过驯服数量限制。"
     default: op
   tamablefoxes.tame.anywhere:
-    description: "Lets players bypass the banned worlds in config.yml (so they can tame in any world)."
+    description: "让玩家绕过config.yml中的禁用世界设置（因此可以在任何世界驯服狐狸）。"
     default: op

@@ -240,8 +240,7 @@ public class EntityTamableFox extends Fox {
         super.addAdditionalSaveData(output);
         UUID uuid = this.getOwnerUUID();
         if (uuid == null) uuid = new UUID(0L, 0L);
-        output.putLong("OwnerUUIDMost", uuid.getMostSignificantBits());
-        output.putLong("OwnerUUIDLeast", uuid.getLeastSignificantBits());
+        output.putString("OwnerUUID", uuid.toString()); // Changed to store as string for consistency
         output.putBoolean("Sitting", this.goalSitWhenOrdered.isOrderedToSit());
         output.putBoolean("Sleeping", this.goalSleepWhenOrdered.isOrderedToSleep());
     }
@@ -249,8 +248,15 @@ public class EntityTamableFox extends Fox {
     @Override
     public void readAdditionalSaveData(ValueInput input) {
         super.readAdditionalSaveData(input);
-        Optional<UUID> uuidOptional = input.read("OwnerUUID", UUIDUtil.CODEC);
-        UUID ownerUuid = uuidOptional.orElse(null);
+        UUID ownerUuid = null;
+        // 尝试读取UUID字符串，如果不存在则会返回默认值
+        String uuidString = input.getStringOr("OwnerUUID", "00000000-0000-0000-0000-000000000000");
+        try {
+            ownerUuid = UUID.fromString(uuidString);
+        } catch (IllegalArgumentException e) {
+            // 如果解析失败，则使用null
+            ownerUuid = null;
+        }
 
 
         if (ownerUuid != null && !ownerUuid.equals(new UUID(0, 0))) {

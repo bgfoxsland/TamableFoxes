@@ -2,7 +2,7 @@
 show-owner-in-fox-name: true
 ask-for-name-after-taming: true
 max-fox-tames: 0
-prefix: "&c[Tamable Foxes] "
+prefix: "&c[驯服狐狸] "
 
 no-tame-worlds:
   - world_nether
