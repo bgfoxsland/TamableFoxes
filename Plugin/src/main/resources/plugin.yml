@@ -1,7 +1,7 @@
 name: Tamablefoxes
 version: ${project.version}
 main: net.seanomik.tamablefoxes.TamableFoxes
-api-version: 1.14
+api-version: 1.20
 load: STARTUP
 description: 在Minecraft中添加可驯服的狐狸！
 
@@ -9,7 +9,7 @@ commands:
   spawntamablefox:
     aliases: [ stf ]
     usage: /spawntamablefox [type]
-    description: 在当前位置生成一只可驯服的狐狸。类型可以是snow(雪狐)或red(红狐)，留空则默认为红狐。
+    description: 在当前位置生成一只可驯服的狐狸。类型可以是snow(雪狐)或red(赤狐)，留空则默认为红狐。
   tamablefoxes:
     aliases: [ tamablefox ]
     usage: /tamablefoxes reload

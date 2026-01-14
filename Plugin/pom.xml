@@ -7,7 +7,7 @@
     <parent>
         <groupId>net.seanomik</groupId>
         <artifactId>tamablefoxes-parent</artifactId>
-        <version>2.3.4-FOX</version>
+        <version>0.0.1-LITE</version>
     </parent>
 
     <artifactId>tamablefoxes</artifactId>
@@ -98,96 +98,6 @@
 
     <dependencies>
         <!-- Entity implementations -->
-        <dependency>
-            <groupId>net.seanomik</groupId>
-            <artifactId>tamablefoxes_v1_14_R1</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.seanomik</groupId>
-            <artifactId>tamablefoxes_v1_15_R1</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.seanomik</groupId>
-            <artifactId>tamablefoxes_v1_16_R1</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.seanomik</groupId>
-            <artifactId>tamablefoxes_v1_16_R2</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.seanomik</groupId>
-            <artifactId>tamablefoxes_v1_16_R3</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.seanomik</groupId>
-            <artifactId>tamablefoxes_v1_17_R1</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.seanomik</groupId>
-            <artifactId>tamablefoxes_v1_17_1_R1</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.seanomik</groupId>
-            <artifactId>tamablefoxes_v1_18_R1</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.seanomik</groupId>
-            <artifactId>tamablefoxes_v1_18_1_R1</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.seanomik</groupId>
-            <artifactId>tamablefoxes_v1_18_R2</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.seanomik</groupId>
-            <artifactId>tamablefoxes_v1_19_R1</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.seanomik</groupId>
-            <artifactId>tamablefoxes_v1_19_1_R1</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.seanomik</groupId>
-            <artifactId>tamablefoxes_v1_19_2_R1</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.seanomik</groupId>
-            <artifactId>tamablefoxes_v1_19_3_R1</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.seanomik</groupId>
-            <artifactId>tamablefoxes_v1_19_4_R1</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>compile</scope>
-        </dependency>
         <dependency>
             <groupId>net.seanomik</groupId>
             <artifactId>tamablefoxes_v1_20_R1</artifactId>

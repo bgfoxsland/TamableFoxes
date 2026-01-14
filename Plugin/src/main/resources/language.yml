@@ -1,6 +1,6 @@
 mc-version-loading: "正在为 Minecraft 版本 %MC_VERSION% 注册实体..."
-unsupported-mc-version-not-registering: "错误：此插件版本仅支持 Spigot 1.14-1.21.7（不含1.21.9、10）！不注册实体！"
-unsupported-mc-version-disabling: "此插件版本仅支持 Spigot 1.14-1.21.11（不含1.21.9、10）！禁用插件！"
+unsupported-mc-version-not-registering: "错误：此插件版本仅支持 Spigot 1.20-1.21.11（不含1.21.9、10）！不注册实体！"
+unsupported-mc-version-disabling: "此插件版本仅支持 Spigot 1.20-1.21.11（不含1.21.9、10）！禁用插件！"
 success-replaced-entity: "已替换可驯服狐狸实体！"
 error-to-replaced-entity: "替换可驯服狐狸实体失败！"
 saving-foxes-message: "正在保存狐狸数据。"
