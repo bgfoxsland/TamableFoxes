@@ -120,17 +120,19 @@ public class EntityTamableFox extends Fox {
             Field landTargetGoal = this.getClass().getSuperclass().getDeclaredField("landTargetGoal"); // landTargetGoal
             landTargetGoal.setAccessible(true);
             landTargetGoal.set(this, new NearestAttackableTargetGoal(this, Animal.class, 10, false, false, (entityliving, level) -> {
-                return (!isTamed() || (Config.doesTamedAttackWildAnimals() && isTamed())) && (entityliving instanceof Chicken || entityliving instanceof Rabbit);
+                return !isTamed() && (entityliving instanceof Chicken || entityliving instanceof Rabbit);
             }));
 
             Field turtleEggTargetGoal = this.getClass().getSuperclass().getDeclaredField("turtleEggTargetGoal"); // turtleEggTargetGoal
             turtleEggTargetGoal.setAccessible(true);
-            turtleEggTargetGoal.set(this, new NearestAttackableTargetGoal(this, Turtle.class, 10, false, false, Turtle.BABY_ON_LAND_SELECTOR));
+            turtleEggTargetGoal.set(this, new NearestAttackableTargetGoal(this, Turtle.class, 10, false, false, (entityliving, level) -> {
+                return !isTamed() && Turtle.BABY_ON_LAND_SELECTOR.test(entityliving, level);
+            }));
 
             Field fishTargetGoal = this.getClass().getSuperclass().getDeclaredField("fishTargetGoal"); // fishTargetGoal
             fishTargetGoal.setAccessible(true);
             fishTargetGoal.set(this, new NearestAttackableTargetGoal(this, AbstractFish.class, 20, false, false, (entityliving, level) -> {
-                return (!isTamed() || (Config.doesTamedAttackWildAnimals() && isTamed())) && entityliving instanceof AbstractSchoolingFish;
+                return !isTamed() && entityliving instanceof AbstractSchoolingFish;
             }));
 
             this.goalSelector.addGoal(0, getFoxInnerPathfinderGoal("FoxFloatGoal"));
