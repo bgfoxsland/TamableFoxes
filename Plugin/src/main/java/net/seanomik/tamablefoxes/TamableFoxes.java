@@ -10,6 +10,8 @@ import net.seanomik.tamablefoxes.util.io.LanguageConfig;
 import net.seanomik.tamablefoxes.versions.version_1_20_R1.NMSInterface_1_20_R1;
 import net.seanomik.tamablefoxes.versions.version_1_20_R3.NMSInterface_1_20_R3;
 import net.seanomik.tamablefoxes.versions.version_1_21_R1.NMSInterface_1_21_R1;
+
+import org.bstats.bukkit.Metrics;
 import org.bukkit.*;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,6 +23,7 @@ import net.seanomik.tamablefoxes.versions.version_1_21_5_R1.NMSInterface_1_21_5_
 import net.seanomik.tamablefoxes.versions.version_1_21_6_R1.NMSInterface_1_21_6_R1;
 import net.seanomik.tamablefoxes.versions.version_1_21_7_R1.NMSInterface_1_21_7_R1;
 import net.seanomik.tamablefoxes.versions.version_1_21_11_R1.NMSInterface_1_21_11_R1;
+
 
 public final class TamableFoxes extends JavaPlugin implements Listener {
     private static TamableFoxes plugin;
@@ -74,6 +77,7 @@ public final class TamableFoxes extends JavaPlugin implements Listener {
             if (Config.getMaxPlayerFoxTames() != 0) {
                 SQLiteHelper.getInstance(this).createTablesIfNotExist();
             }
+            Metrics metrics = new Metrics(this, BSTATS_PLUGIN_ID);
         }
     }
 
