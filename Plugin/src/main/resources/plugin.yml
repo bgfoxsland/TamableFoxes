@@ -3,42 +3,42 @@ version: ${project.version}
 main: net.seanomik.tamablefoxes.TamableFoxes
 api-version: 1.14
 load: STARTUP
-description: 在Minecraft中添加可驯服的狐狸！
+description: Adds tamable foxes to Minecraft!
 
 commands:
   spawntamablefox:
     aliases: [ stf ]
     usage: /spawntamablefox [type]
-    description: 在当前位置生成一只可驯服的狐狸。类型可以是snow(雪狐)或red(红狐)，留空则默认为红狐。
+    description: Spawn a tamable fox at the standing location. Type can be snow or red, or left empty for a red.
   tamablefoxes:
     aliases: [ tamablefox ]
     usage: /tamablefoxes reload
-    description: 重载可驯服狐狸插件配置。更新插件时请重启。
+    description: Reload the Tamable Foxes plugin config. Restart when updating the plugin.
   givefox:
     usage: /givefox [player name]
-    description: 将一只狐狸给予另一个玩家。
+    description: Give a fox to another player.
 permissions:
   tamablefoxes.givefox.give.others:
-    description: "允许玩家使用/givefox命令将其他人的狐狸转交给别的玩家"
+    description: "Allows the player to give another players fox to a player with /givefox"
     default: op
   tamablefoxes.givefox.give:
-    description: "赋予玩家使用/givefox命令将狐狸给予其他玩家的能力"
+    description: "Gives the player the ability to give foxes to other players with /givefox"
     default: true
   tamablefoxes.givefox.receive:
-    description: "赋予玩家从/givefox命令接收狐狸的能力"
+    description: "Gives the player the ability to receive foxes from other players from /givefox"
     default: true
   tamablefoxes.reload:
-    description: "重载插件配置。"
+    description: "Reloads the plugin config."
     default: op
   tamablefoxes.spawn:
-    description: "赋予玩家生成可驯服狐狸的能力。"
+    description: "Gives the player the ability to spawn tamable foxes."
     default: op
   tamablefoxes.tame:
-    description: "赋予玩家驯服狐狸的能力。"
+    description: "Gives the player the ability to tame a fox."
     default: true
   tamablefoxes.tame.unlimited:
-    description: "让玩家绕过驯服数量限制。"
+    description: "Lets players bypass the tame limit."
     default: op
   tamablefoxes.tame.anywhere:
-    description: "让玩家绕过config.yml中的禁用世界设置（因此可以在任何世界驯服狐狸）。"
+    description: "Lets players bypass the banned worlds in config.yml (so they can tame in any world)."
     default: op

@@ -7,7 +7,7 @@
     <parent>
         <groupId>net.seanomik</groupId>
         <artifactId>tamablefoxes-parent</artifactId>
-        <version>2.3.4-FOX</version>
+        <version>2.3.5</version>
     </parent>
 
     <artifactId>tamablefoxes</artifactId>
@@ -21,6 +21,13 @@
     </properties>
 
     <build>
+        <defaultGoal>install</defaultGoal>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <!-- Shade plugin configuration inchangée -->
             <plugin>
@@ -36,6 +43,12 @@
                         <configuration>
                             <outputFile>target/TamableFoxes-v${project.parent.version}.jar</outputFile>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <relocations>
+                                <relocation>
+                                    <pattern>org.bstats</pattern>
+                                    <shadedPattern>net.seanomik.tamablefoxes.lib.org.bstats</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </execution>
                 </executions>
@@ -228,7 +241,7 @@
         <dependency>
             <groupId>org.bstats</groupId>
             <artifactId>bstats-bukkit</artifactId>
-            <version>2.2.1</version>
+            <version>3.1.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -259,6 +272,18 @@
             <groupId>net.seanomik</groupId>
             <artifactId>tamablefoxes_v1_21_11_R1</artifactId>
             <version>${project.parent.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.seanomik</groupId>
+            <artifactId>tamablefoxes_v1_21_11_R1</artifactId>
+            <version>${project.parent.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.seanomik</groupId>
+            <artifactId>tamablefoxes_v1_21_9_R1</artifactId>
+            <version>2.3.5</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
