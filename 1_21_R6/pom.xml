@@ -63,6 +63,10 @@
       <id>codemc-snapshots</id>
       <url>https://repo.codemc.io/repository/nms/</url>
     </repository>
+    <repository>
+      <id>mvn-wesjd-net</id>
+      <url>https://mvn.wesjd.net/</url>
+    </repository>
   </repositories>
 
   <dependencies>
